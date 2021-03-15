@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Comida Rustica</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+<br>
+<div class="container">
+<div class="card bg-dark">
+	<div>
+	   	<h1 class="text-center" style="font-family: cursive; color: white;">Rustica Santa Anita<h1>				    	
+	</div>
+	<h2><div class="card-header bg-dark text-white" align="center" > <strong> Comprobante Orden pago </strong></div></h2>
+	<div class="card-body">
+	<ul class="list-group">
+		<li class="list-group-item" th:text="'Id orden: ' +${ordenpago.idord}"></li>
+		<li class="list-group-item" th:text="'Id usuario: ' +${ordenpago.idusu}"></li>
+		<li class="list-group-item" th:text="'Metodo de pago ' +${ordenpago.metodopago.metodopago}"></li>
+		<li class="list-group-item" th:text="'Precio a pagar: ' +${ordenpago.total}"></li>
+		<li class="list-group-item" th:text="'Direccion: ' +${ordenpago.calle.calle}"></li>
+		<strong><li class="list-group-item" style="font-family: cursive; color: black;" th:text="' Gracias por consumir en nuestra web' "></li></strong>
+	</ul>
+	</div>
+</div>
+</div>
+</body>
+</html>

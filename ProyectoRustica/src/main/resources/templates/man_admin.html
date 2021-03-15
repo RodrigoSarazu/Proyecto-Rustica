@@ -1,0 +1,54 @@
+  <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ADMINISTRADOR</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+	<div class="container mt-3" align="center">
+		<div class="col-sm-6">
+			<form th:action="@{/save_admin}" th:object=${userrusticas} method="POST" enctype="multipart/form-data">
+			<div class="table table-dark table-striped table-bordered border-danger">
+				<div class="card-header">
+				<div>
+					<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+				</div>
+				<h3 style="font-family: cursive;">Administrador</h3>
+					</div>
+						 <div class="col-md-6">
+					    	<input th:field="*{user_id}" type="text" class="form-control" hidden=""> 
+					 	 </div>
+					 	 <div class="col-md-6">
+					    	<label  class="form-label" style="font-family: cursive;">Username:</label>
+					    	<input	th:field="*{username}" type="text" class="form-control" placeholder="username" required data-error="Por favor rellene la parte de username"> 
+					    	<small class="form-text text-danger" th:if="${#fields.hasErrors('username')}"
+								th:errors="*{username}">
+							</small>
+					 	 </div>
+					 	 
+					 	 
+					 	 <div class="col-md-6">
+					    	<label  class="form-label" style="font-family: cursive;">Password:</label>
+					    	<input	th:field="*{password}" type="password" class="form-control" placeholder="password" required data-error="Por favor rellene la parte de password"> 
+					    	<small class="form-text text-danger" th:if="${#fields.hasErrors('password')}"
+								th:errors="*{password}">
+							</small>
+					 	 </div>
+					 	 <div>
+					 	 <br>					 	 
+					 	 </div>					 	 
+					 	 <div class="card-footer">
+					 	 	<input type="submit" value="GUARDAR" class="btn btn-success">
+					 	 <a th:href="@{/listadoadmin}" class="btn btn-danger">CANCELAR</a>
+					</div>		
+				</div>			
+			</form>
+		</div>
+	</div>
+</body>
+</html>

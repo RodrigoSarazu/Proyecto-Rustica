@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Comida Rustica</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+<ul th:replace="headeradmin :: navigation"></ul>
+<br>
+<div>
+	<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+</div>
+<h3 style="font-family: cursive;"><center class=""><strong><u>Comidas</center></h3></strong></u>
+<div class="container mt-4">
+<a class="nav-link float-right" title="Exportar PDF" target="_blank" th:href="@{/listadocomida/(format=pdf)}">
+<img  class="img-responsive center-box"  src="static/img/pdf.png" th:src="@{/img/pdf.png}" alt="..." height="auto" >
+Importe su pdf
+</a>
+<a th:href="@{/man_comida}" class="btn btn-success btn-sm">Nuevo registro de comida</a>	
+<table class="table table-dark table-striped table-bordered border-danger">
+  <thead align="center">
+    <tr>
+      	<td scope="col"><strong>Codigo Comida</strong></td>
+      	<td scope="col"><strong>Nombre de comida</strong></td>
+      	<td scope="col"><strong>Precio</strong></td>
+      	<td scope="col"><strong>Imagen</strong></td>
+      	<td scope="col"><strong>Acciones</strong></td>
+    </tr>
+  </thead>
+  	<tbody align="center">
+    	<tr th:each="per:${comidasadmin}">
+    			<th scope="row">
+    				<a class="btn btn-info btn-xs"
+    				th:href="@{/detalle/}+${per.idcom}"
+    				th:text="${per.idcom}">
+    				</a>
+    			</th>
+				<td th:text="${per.nombre}"></td>
+				<td th:text="${'$/'+per.precio}"></td>		
+				<td>
+					<img th:src="@{'/img/'+${per.imagen}}" th:alt="${per.imagen}" class="img-thumbnail" style="max-width:30%;"></td>		
+				<td>	
+					<a th:href="@{/comida_editar/}+${per.idcom}" class="btn btn-warning btn-sm">Editar</a>		
+					<h3></h3>						
+					<a th:href="@{/comida_eliminar/}+${per.idcom}" class="btn btn-danger btn-sm"
+					title="Eliminar Comida"
+							onclick="return confirm('Esta seguro de eliminar esta comida?');"
+					>Eliminar</a>				
+				</td>		
+		</tr>	
+  	</tbody>
+	</table>
+	<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+		<strong><label th:text="${success}"></label></strong>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+	<a th:href="@{/admin}" class="btn btn-info">REGRESAR</a>
+</div>
+</body>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<ul th:replace="footer :: footer"></ul>
+<!-- Footer -->
+</html>

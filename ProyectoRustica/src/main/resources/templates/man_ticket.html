@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>TICKET</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+	<div class="container mt-3" align="center">
+		<div class="col-sm-6">
+			<form th:action="@{/save_ticket}" th:object=${tickets} method="POST" enctype="multipart/form-data">
+				<div class="table table-dark table-striped table-bordered border-danger">
+				<div>
+					<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+				</div>
+					<div class="card-header">
+						<h3 style="font-family: cursive;">INGRESE TICKET</h3>
+					</div>
+					<div class="card-body">
+						 <div>
+						 <label style="font-family: cursive;">ID Usuario:</label>
+						 <input	th:field="*{idusu}" type="text" class="form-control" required data-error="Por favor rellene la parte de usuario"> 
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('idusu')}"
+							th:errors="*{idusu}">
+						</small>
+						 </div>
+						 
+						 <label class="form-label" style="font-family: cursive;">Seleccione Comida:</label>
+						 <select th:field="*{nombre}" class="form-control form-control-sm col-md-10" id="nombre"> 
+							<option th:each="nombre:${nombre}"
+								th:value="${nombre.idcom}"
+								th:text="${nombre.nombre}"		
+							/>					
+						 </select>
+						 
+						 <div>
+						 <label style="font-family: cursive;">Cantidad:</label> 
+						 <input th:field="*{cantidad}" type="text" class="form-control" required data-error="Por favor rellene la parte de cantidad">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('cantidad')}"
+							th:errors="*{cantidad}">
+						</small>
+						 </div>
+						 
+						 <div>
+						 <label style="font-family: cursive;">Fecha de Pedido:</label>
+						 <input th:field="*{fechaped}" type="datetime-local" class="form-control" required data-error="Por favor rellene la parte de fecha de pedido">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaped')}"
+								th:errors="*{fechaped}">
+						</small>
+						 </div>
+						 
+						 <div>
+						 <label style="font-family: cursive;">Fecha de Entrega:</label>
+						 <input th:field="*{fechaent}" type="datetime-local" class="form-control" required data-error="Por favor rellene la parte de fecha de entrega">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaent')}"
+							th:errors="*{fechaent}">
+						</small>
+						 </div>						 
+						 <div>
+					</div>
+				</div>
+				</div>
+				<div class="card-footer"></div>
+				<input type="submit" value="GUARDAR" class="btn btn-success">
+				<a th:href="@{/listadoticket}" class="btn btn-danger">CANCELAR</a>				
+			</form>
+		</div>
+	</div>
+</body>
+</html>

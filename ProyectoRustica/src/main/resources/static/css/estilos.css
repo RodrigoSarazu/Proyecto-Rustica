@@ -1,0 +1,48 @@
+.banneranimado{
+	width: 60%;
+	height: 3.2cm;
+	border: 3px solid white;
+	margin: auto;
+	
+	background-image: url(/img/tallarinxd.jpg);
+	
+	background-size: 100% 100%;
+	
+	animation: banneranimado 6s infinite;
+	animation-direction: alternative;
+	
+}
+
+@keyframes banneranimado {
+	0%, 30%{
+		background-image: url(/img/rusticabanner.jpg);
+		opacity: 1;
+	}	
+
+	31%, 65%{
+		background-image: url(/img/animrustica1.jpg);
+		opacity: 1;
+	}
+}
+
+.banneranimadodos{
+	width: 35%;
+	height: 3.2cm;
+	border: 3px solid white;
+	margin: auto;
+	
+	background-image: url(/img/buffetcriollo.jpg);
+	
+	background-size: 100% 100%;
+	
+	animation: banneranimado 6s infinite;
+	animation-direction: alternative;
+	
+}
+
+@keyframes banneranimadodos{
+	0%, 30%{
+		background-image: url(/img/descuentosrustica.jpg);
+		opacity: 1;
+	}	
+}

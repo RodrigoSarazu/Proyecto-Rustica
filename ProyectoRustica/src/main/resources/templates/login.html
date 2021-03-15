@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+       
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+<link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+<meta charset="UTF-8">
+
+<link rel="stylesheet" 
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, user scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+<link rel="stylesheet"  href="static/css/estilos.css"  th:href="@{/css/estilos.css}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <img src="static/img/logorustica.png" th:src="@{/img/logorustica.png}" width="25"/><a class="navbar-brand" href="#"><strong>Rustica</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" th:href="@{/loginadmin}">Ingreso Admin</a>
+      </div>
+    </div>
+  </div>
+</nav>
+	<br>
+	<div class="banneranimadodos"></div>
+	<div class="modal-dialog text-center" style="font-family: cursive;">
+        <div class="col-sm-10 main-section">
+            <div class="modal-content">
+                <div class="col-14 user-img">
+                    <img src="static/img/rustica.png" th:src="@{/img/rustica.png}"/>
+				</div>
+				<form  action="#" th:action="@{/login}" th:object="${usuario}" method="post">
+				<tr>
+					<td>Email</td>
+				<td>   
+					<input type="text" th:field="*{email}"  placeholder="Nombre de email"  class="form-control" required data-error="Por favor ingrese su usuario"/>
+				</td>
+				</tr>
+				<h1></h1>		
+				<tr>
+					<td>Password</td>
+				<td>  
+					<input type="password" th:field="*{password}" placeholder="Contraseña de email" class="form-control" required data-error="Por favor ingrese su contraseña"/>			
+				</td>
+				</tr>
+				<h2></h2>
+				<tr>
+				<td colspan="2">
+					<button href="#" type="submit" class="btn btn-primary">Ingresar</button>
+		  		</td>		
+				</tr>
+				<h3></h3>	
+				<div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${success!=null}">
+  					<label th:text=${success}></label>
+				</div>
+				</form>
+				<form>
+				<tr>
+				<td colspan="1">
+					 <a>Si no tienes cuenta puede registrarte</a>
+					 <a th:href="@{/registro}" class="btn btn-success">Registro Usuario</a>
+		  		</td>
+		  		</tr>
+		  		<h4></h4>	
+				</form> 
+			</div>			
+		</div>			
+</div>		
+</body>
+</html>

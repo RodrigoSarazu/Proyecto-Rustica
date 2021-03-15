@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Comida Rustica</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+<br>
+<div class="container">
+<div class="card bg-dark">
+	<div>
+	   	<h1 class="text-center" style="font-family: cursive; color: white;">Rustica Santa Anita<h1>				    	
+	</div>
+	<h4><div class="card-header bg-dark text-white" th:text="${titulo}"></div></h4>
+	<div class="card-body">
+	<img class="img-thumbnail rounded float-left" th:src="@{'/img/'+${comida.imagen}}" th:alt="${comida.imagen}" style="max-width:30%;">
+	<ul class="list-group">
+		<li class="list-group-item" th:text="'Codigo de comida: ' +${comida.idcom}"></li>
+		<li class="list-group-item" th:text="'Nombre de la comida: ' +${comida.nombre}"></li>
+		<li class="list-group-item" th:text="'Precio de la comida: ' +'$/'+${comida.precio}"></li>
+	</ul>
+	</div>
+</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

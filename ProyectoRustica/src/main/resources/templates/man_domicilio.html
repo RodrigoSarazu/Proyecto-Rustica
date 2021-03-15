@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>DOMICILIO</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<script src = "https://maps.googleapis.com/maps/api/js?sensor=false&region=GB"></script>
+<script> function initialize() { var mapProp = { center:new google.maps.LatLng(-12.0538962,-76.9659315), zoom:5, 
+		mapTypeId:google.maps.MapTypeId.ROADMAP }; var map=new google.maps.Map(document.getElementById("googleMap"),mapProp); } 
+		google.maps.event.addDomListener(window, 'load', initialize); 
+</script>	
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+<div class="container mt-4 float-right"  id="googleMap" style="width:500px;height:380px;">
+</div>
+	<div class="container mt-3">
+		<div class="col-sm-6">
+			<form th:action="@{/save_domicilio}" th:object=${domicilios} method="POST" enctype="multipart/form-data">
+				<div class="table table-dark table-striped table-bordered border-danger">
+				    <div>
+				    	<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+				    </div>
+					<div class="card-header" align="center">
+						<h3 style="font-family: cursive;"><strong>DOMICILIO</strong></h3>
+					</div>					
+					<div class="card-body">
+						 <strong><input	th:field="*{iddomicilio}" type="text" class="form-control" hidden=""> </strong>
+						 
+						 <div>
+						 <label><strong>Id Usuario:</strong></label> 
+						 <strong><input	th:field="*{idusu}" type="text" class="form-control" required data-error="Por favor rellene la parte de usuario" style="font-family: cursive; "placeholder="Ingrese su id"> </strong>
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('idusu')}"
+							th:errors="*{idusu}">
+						 </small>
+						 </div>
+						 
+						 <div>
+						 <label><strong>Calle:</strong></label>
+						 <strong><input th:field="*{calle}" type="text" class="form-control" required data-error="Por favor rellene la parte de calle" style="font-family: cursive;" placeholder="Introduzca Calle"></strong>
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('calle')}"
+								th:errors="*{calle}">
+						</small>
+						 </div>
+						 
+						 <div>
+						 <label><strong>Estado:</strong></label>
+						 <strong><input th:field="*{estado}" type="text" class="form-control" required data-error="Por favor rellene la parte de estado" style="font-family: cursive;" placeholder="Introduzca Pais"></strong>
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('estado')}"
+							th:errors="*{estado}">
+						 </small>
+						 </div>
+						 
+						 <div>
+						 <label><strong>Ciudad:</strong></label>
+						 <strong><input th:field="*{ciudad}" type="text" class="form-control" required data-error="Por favor rellene la parte de ciudad" style="font-family: cursive;" placeholder="Introduzca Ciudad"></strong>
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('ciudad')}"
+							th:errors="*{ciudad}">
+						 </small>
+						 </div>
+						 
+						 <div>
+						 <label><strong>Distrito:</strong></label>
+						 <strong><input th:field="*{distrito}" type="text" class="form-control" required data-error="Por favor rellene la parte de distrito" style="font-family: cursive;" placeholder="Introduzca Distrito"></strong>
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('distrito')}"
+						 	th:errors="*{distrito}">
+						 </small>
+						 </div>
+						 
+						 <div>
+					</div>
+				</div>
+				</div>
+				<div class="card-footer"></div>
+				<input type="submit" value="GUARDAR" class="btn btn-success">
+				<a th:href="@{/listadodomicilio}" class="btn btn-danger">CANCELAR</a>				
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

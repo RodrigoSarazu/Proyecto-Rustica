@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Compras Rustica</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+</head>
+<body>
+<ul th:replace="headeradmin :: navigation"></ul>
+<br>
+<div>
+	<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+</div>
+<h3 style="font-family: cursive;"><center class=""><strong><u>Compras</center></h3></strong></u>
+<div class="container mt-4">
+<a th:href="@{/mant_compras}" class="btn btn-success btn-sm" >Nueva Compra</a>
+<table class="table table-dark table-striped table-bordered border-danger">
+  <thead align="center">
+    <tr>
+    	<td scope="col"><strong>Ver Comprobante</strong></td>
+      	<td scope="col"><strong>Nombre Proveedor</strong></td>
+      	<td scope="col"><strong>Descripcion</strong></td>
+      	<td scope="col"><strong>Total</strong></td>
+      	<td scope="col"><strong>Acciones</strong></td>
+    </tr>
+  </thead>
+  	<tbody align="center">
+    	<tr th:each="per:${comprasadmin}" >
+    			<th scope="row">
+    				<a class="btn btn-success btn-sm"
+    				th:href="@{/detalle_compras/}+${per.idcomp}"
+    				th:text="Comprobante">
+    				</a>
+    			</th>
+    			<td th:text="${per.idcomp}" hidden=""></td>
+    			<td th:text="${per.nomprove.nomprove}"></td>
+				<td th:text="${per.descripcion}" ></td>
+				<td th:text= "'S/.'+(${per.cantidad}*${per.precio}+(${per.cantidad}* ${per.precio}*0.18))"></td>
+				<td th:text="${per.cantidad}" hidden=""></td>	
+				<td>									
+					<a th:href="@{/eliminar_compra/}+${per.idcomp}" class="btn btn-danger btn-sm"
+					title="Eliminar Compras" onClick="return confirm('Estas seguro de eliminar esta compra?');"
+					>Eliminar</a>			
+				</td>
+		</tr>	
+  	</tbody>
+	</table>
+	<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+		<strong><label th:text="${success}"></label></strong>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+	<a th:href="@{/admin}" class="btn btn-info btn-sm">Regresar</a>
+</div>
+</body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<ul th:replace="footer :: footer"></ul>
+<!-- Footer -->
+</html>
+
+</body>
+</html>

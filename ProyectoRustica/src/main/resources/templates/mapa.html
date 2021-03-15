@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org"
+ 
+<head>
+<script src = "https://maps.googleapis.com/maps/api/js?sensor=false&region=GB"></script>
+<script> function initialize() { var mapProp = { center:new google.maps.LatLng(-12.0538962,-76.9659315), zoom:5, 
+		mapTypeId:google.maps.MapTypeId.ROADMAP }; var map=new google.maps.Map(document.getElementById("googleMap"),mapProp); } 
+		google.maps.event.addDomListener(window, 'load', initialize); 
+</script>
+</head>
+
+<body>
+<div class="container mt-4 float-right"  id="googleMap" style="width:500px;height:380px;">
+</div>
+
+</body>
+</html>

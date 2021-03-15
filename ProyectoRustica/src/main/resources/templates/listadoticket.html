@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Tickets</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+<ul th:replace="header :: navigation"></ul>
+<br>
+<div>
+	<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+</div>
+<h3 style="font-family: cursive;"><center class=""><strong><u>Tickets</center></h3></strong></u>
+<div class="container mt-4">
+<a class="nav-link float-right" title="Exportar PDF" target="_blank" th:href="@{/listadoticket/(format=pdf)}">
+<img  class="img-responsive center-box"  src="static/img/pdf.png" th:src="@{/img/pdf.png}" alt="..." height="auto" >
+Importe su pdf
+</a>
+<a th:href="@{/man_ticket}" class="btn btn-success btn-sm">Solicite su nuevo ticket</a>	
+<table class="table table-dark table-striped table-bordered border-danger">
+  <thead align="center">
+    <tr>
+    	
+      	<td scope="col"><strong>Codigo Ticket</strong></td>
+      	<td scope="col"><strong>Codigo Usuario</strong></td>
+      	<td scope="col"><strong>Nombre de Comida</strong></td>
+      	<td scope="col"><strong>IGV</strong></td>
+      	<td scope="col"><strong>Precio Comida</strong></td>
+      	<td scope="col"><strong>Cantidad</strong></td>
+      	<td scope="col"><strong>Total de pedido</strong></td>
+      	<td scope="col"><strong>Fecha de Entrega</strong></td>
+      	<td scope="col"><strong>Fecha de Pedido</strong></td>
+      	<td scope="col"><strong>Eliminar Ticket</strong></td>
+    </tr>
+  </thead>
+  	<tbody align="center">
+    	<tr th:each="per:${tickets}">
+    			<td th:text="${per.idticket}"></td>
+				<td th:text="${per.idusu}"></td>
+				<td th:text="${per.nombre.nombre}"></td>
+				<td th:text="'S/.'+${per.cantidad}*${per.nombre.precio}*0.18"> </td>
+				<td th:text="'S/.'+${per.nombre.precio}"></td>
+				<td th:text="${per.cantidad}"></td>	
+				<td th:text="'S/.'+(${per.cantidad}*${per.nombre.precio}+(${per.cantidad}*${per.nombre.precio}*0.18)) "></td>	
+				<td th:text="${per.fechaped}"></td>	
+				<td th:text="${per.fechaent}"></td>	
+				<td>									
+					<a th:href="@{/ticket_eliminar/}+${per.idticket}" class="btn btn-danger btn-sm"
+					title="Eliminar Ticket"
+							onclick="return confirm('Esta seguro de eliminar este ticket?');"
+							>Eliminar</a>					
+				</td>				
+		</tr>	
+  	</tbody>
+	</table>
+	<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+		<strong><label th:text="${success}"></label></strong>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+	<a th:href="@{/menu}" class="btn btn-info btn-sm">Registrar</a>
+</div> 
+</body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<ul th:replace="footer :: footer"></ul>
+<!-- Footer -->
+</html>

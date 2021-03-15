@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Rustica</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+<link rel="stylesheet"  href="static/css/estilos.css"  th:href="@{/css/estilos.css}">
+<meta charset="UTF-8">
+</head>
+<ul th:replace="headeradmin :: navigation"></ul>
+<br>
+<body>
+<h2><center><strong><u> Ubicanos en nuestros nuevos locales</u> </strong> </center></h2>
+	<div class="container mt-4 col-sm-8 main-section">
+	<br>
+	<div class="banneranimado">
+	</div>
+	<br/>
+	<div id="lube" >
+		<img src="static/img/rusticachorrillos.jpg" th:src="@{/img/rusticachorrillos.jpg}" alt="..." class="img-thumbnail" >
+		<img src="static/img/rusticacostaverde.jpg" th:src="@{/img/rusticacostaverde.jpg}" alt="..." class="img-thumbnail">
+		<img src="static/img/rusticasanborja.jpg" th:src="@{/img/rusticasanborja.jpg}" alt="..." class="img-thumbnail">
+		<img src="static/img/rusticasur.jpg" th:src="@{/img/rusticasur.jpg}" alt="..." class="img-thumbnail">
+		<img src="static/img/rusticasanmiguel.jpg" th:src="@{/img/rusticasanmiguel.jpg}" alt="..." class="img-thumbnail">
+		<img src="static/img/rusticasanmiguel2.jpg" th:src="@{/img/rusticasanmiguel2.jpg}" alt="..." class="img-thumbnail" width="250">
+	</div>
+	</div>
+</body>
+<br>
+<br>
+<ul th:replace="footer :: footer"></ul>
+</html>

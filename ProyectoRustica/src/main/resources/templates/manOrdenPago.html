@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Comida Rustica</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+	<div class="container mt-4 col-sm-8 main-section">
+	<div class="card bg-dark" style="color: white;" align="center">
+		<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+	</div>
+	<div class="card bg-dark" style="color: white;" align="center">
+						<h3 style="font-family: cursive;">Orden Pago</h3>
+	</div>
+	<div class="card bg-dark">
+		<div class="card-body">
+		<form th:action="@{/save_pago}" th:object="${ordenpago}" method="post">
+		
+			<div class="form-group row">
+				<label class="form-label" style="color: white; font-family: cursive;">Codigo Usuario:</label>
+		    	<input th:field="*{idusu}" id="idusu"  type="text" class="form-control" placeholder="id usuario" required data-error="Por favor rellene la parte de usuario"> 
+		    	<small class="form-text text-danger" th:if="${#fields.hasErrors('idusu')}"
+						th:errors="*{idusu}">
+					</small>
+			</div>
+			
+			
+			<div class="form-group row">
+				<label class="form-label" style="color: white; font-family: cursive;" >Seleccione Metodo Pago:</label>
+				<select th:field="*{metodopago}" class="form-control form-control-sm col-md-6" id="metodopago"> 
+					<option th:each="metodopago:${metodopago}"
+						th:value="${metodopago.idmep}"
+						th:text="${metodopago.metodopago}"		
+					/>					
+				</select>
+			</div>
+			
+			
+			<div class="form-group row">
+				<label class="form-label" style="color: white; font-family: cursive;">Total:</label>
+			    <input th:field="*{total}" id="total" type="text" class="form-control" placeholder="Ingrese el total" required data-error="Por favor rellene la parte del total"> 
+			    <small class="form-text text-danger" th:if="${#fields.hasErrors('total')}"
+						th:errors="*{total}">
+					</small>
+			</div>
+			
+			
+			<div class="form-group row">
+				<label class="form-label" style="color: white; font-family: cursive;">Seleccione Domicilio: </label>
+				<select th:field="*{calle}" class="form-control form-control-sm col-md-6" id="calle"> 
+					<option th:each="calle:${domicilio}"
+						th:value="${calle.iddomicilio}"
+						th:text="${calle.calle}"		
+					/>					
+				</select>
+			</div>
+			
+			
+			<div class="card-footer">
+					 	 	<input type="submit" value="GUARDAR" class="btn btn-success">
+					 	 <a th:href="@{/ordenpago}" class="btn btn-danger">CANCELAR</a>
+					</div>	
+		</form>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

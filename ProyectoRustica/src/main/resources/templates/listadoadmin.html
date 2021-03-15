@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Administradores</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+<ul th:replace="headeradmin :: navigation"></ul>
+<br>
+<div>
+	<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+</div>
+<h3 style="font-family: cursive;"><center> <strong><u>Administradores</u></strong></center></h3>
+<div class="container mt-4">
+<div>
+<a th:href="@{/man_admin}" class="btn btn-success btn-sm">Nuevo Administrador</a>	
+</div>
+<br/>
+<table class="table table-dark table-striped table-bordered border-danger">
+  <thead align="center">
+    <tr>
+      	<td scope="col"><strong>Codigo Admin</strong></td>
+      	<td scope="col"><strong>Usuario Admin</strong></td>
+      	<td scope="col"><strong>Acciones</strong></td>
+    </tr>
+  </thead>
+  	<tbody align="center">
+    	<tr th:each="per:${userrusticas}">
+    			<td th:text="${per.user_id}"></td>
+				<td th:text="${per.username}"></td>
+				<td>					
+					<a th:href="@{/admin_editar/}+${per.user_id}" class="btn btn-warning btn-sm">Editar</a>					
+					<a th:href="@{/admin_eliminar/}+${per.user_id}" class="btn btn-danger btn-sm"
+					title="Eliminar Administrador"
+							onclick="return confirm('Esta seguro de eliminar este administrador?');"
+							>Eliminar</a>				
+				</td>				
+		</tr>	
+  	</tbody>
+	</table>
+	<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+		<strong><label th:text="${success}"></label></strong>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+	<a th:href="@{/admin}" class="btn btn-info btn-sm">Regresar</a>
+</div>
+</body>
+<body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<ul th:replace="footer :: footer"></ul>
+<!-- Footer -->
+
+</html>

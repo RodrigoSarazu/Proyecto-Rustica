@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<footer class="bg-dark text-center text-lg-start" th:fragment="footer" >
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase text-light">Vision</h5>
+        <p class="text-light">
+          Participar activamente en la nueva historia del Peru tanto en su desarrollo economico como social, 
+          liderando un cambio de mentalidad positiva que se inicia desde nuestros colaboradores.
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase text-light">Contactos</h5>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a href="#!" class="text-light">Celular (+51)988544222</a>
+          </li>
+          <li>
+            <a href="#!" class="text-light">Telefono (+01)4563287</a>
+          </li>
+        </ul>
+      </div>
+ 
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-0 text-light">Sitio Web</h5>
+        <ul class="list-unstyled">
+          <li>
+            <img src="static/img/facebook.png" th:src="@{/img/facebook.png}" width="20"/><a href="#!" class="text-light">Facebook Rustica</a>
+          </li>
+          <li>
+            <img src="static/img/instagram.png" th:src="@{/img/instagram.png}" width="20"/> <a href="#!" class="text-light">Instagram Rustica</a>
+          </li>
+          <li>
+            <img src="static/img/twitter.jpg" th:src="@{/img/twitter.jpg}" width="20"/><a href="#!" class="text-light">Twitter Rustica</a>
+          </li> 
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+       <img src="static/img/rustica.png" th:src="@{/img/rustica.png}" width="100"/> <a class="text-light">2020 Copyright Rustica</a>
+    <a class="text-light" href="https://mdbootstrap.com/"></a>
+  </div>
+</footer>
+</body>
+</html>

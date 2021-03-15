@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Domicilio Rustica</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+<ul th:replace="headeradmin :: navigation"></ul>
+<br>
+<div>
+	<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+</div>
+<h3 style="font-family: cursive;"><center class=""><strong><u>Domicilios</center></h3></strong></u>
+<div class="container mt-4">
+<a class="nav-link float-right" title="Exportar PDF" target="_blank" th:href="@{/listadodomicilio/(format=pdf)}">
+<img  class="img-responsive center-box"  src="static/img/pdf.png" th:src="@{/img/pdf.png}" alt="..." height="auto" >
+Importe su pdf
+</a>
+<table class="table table-dark table-striped table-bordered border-danger">
+  <thead align="center">
+    <tr>
+    	<td scope="col"><strong>Detalle Domicilio</strong></td>
+      	<td scope="col"><strong>Codigo Usuario</strong></td>
+      	<td scope="col"><strong>Calle</strong></td>
+      	<td scope="col"><strong>Distrito</strong></td>
+      	<td scope="col"><strong>Eliminar Domicilio</strong></td>
+    </tr>
+  </thead>
+  	<tbody align="center">
+    	<tr th:each="per:${domiciliosadmin}" >
+    			<th scope="row">
+    				<a class="btn-outline-success"
+    				th:href="@{/detalle_domicilio/}+${per.iddomicilio}"
+    				th:text="Detalle">
+    				</a>
+    			</th>
+    			<td th:text="${per.iddomicilio}" hidden=""></td>
+				<td th:text="${per.idusu}" ></td>
+				<td th:text="${per.calle}"></td>
+				<td th:text="${per.estado}" hidden=""></td>	
+				<td th:text="${per.ciudad}" hidden=""></td>	
+				<td th:text="${per.distrito}"></td>				
+				<td>								
+					<a th:href="@{/domicilio_eliminaradmin/}+${per.iddomicilio}" class="btn btn-danger btn-sm"
+										title="Eliminar Domicilio"
+							onclick="return confirm('Esta seguro de eliminar este domicilio?');"
+							>Eliminar</a>				
+				</td>		
+		</tr>	
+  	</tbody>
+	</table>
+	<a th:href="@{/admin}" class="btn btn-info btn-sm">REGRESAR</a>
+</div>
+</body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<ul th:replace="footer :: footer"></ul>
+<!-- Footer -->
+</html>

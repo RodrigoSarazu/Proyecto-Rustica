@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Vista tickets</title>
+<link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+<ul th:replace="headeradmin :: navigation"></ul>
+<br>
+<div>
+	<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+</div>
+	<center><h3 style="font-family: cursive;"><strong><u>Buscador de Tickets</h3></center></strong></u>
+	<div class="container mt-5" align="center">
+	<div class="col-md-8" align="center">
+	<a class="nav-link float-right" title="Exportar PDF" target="_blank" th:href="@{/listadoticket/(format=pdf)}">
+<img  class="img-responsive center-box"  src="static/img/pdf.png" th:src="@{/img/pdf.png}" alt="..." height="auto" >
+	Importe los tickets
+	</a>
+	
+	<form th:action="@{/idticket}" th:object="${ticket}" method="get">
+		<input type="text"  th:field="*{idticket}" class="form-control col-md-5" placeholder="Id ticket" required data-error="Por favor rellene la parte de descripcion"/>
+		<button type="submit" class="btn btn-success btn-sm"> Buscar</button>
+	</form>
+	<br/>
+	<table class="table table-dark table-striped table-bordered border-danger">
+  	<thead align="center">
+    <tr>
+      	<td scope="col"><strong>Codigo Ticket</strong></td>
+      	<td scope="col"><strong>Codigo Usuario</strong></td>
+      	<td scope="col"><strong>Codigo Comida</strong></td>
+      	<td scope="col"><strong>IGV</strong></td>
+      	<td scope="col"><strong>Precio de Comida</strong></td>
+      	<td scope="col"><strong>Cantidad</strong></td>
+      	<td scope="col"><strong>Precio a pagar</strong></td>
+      	<td scope="col"><strong>Fecha de Pedido</strong></td>
+      	<td scope="col"><strong>Fecha de Entrega</strong></td>
+    </tr>
+  	</thead>
+  	<tbody align="center">
+    	<tr th:each="per:${ticketPorUsuario}">
+    			<td th:text="${per.idticket}"></td>
+				<td th:text="${per.idusu}"></td>
+				<td th:text="${per.nombre.nombre}"></td>
+				<td th:text="${per.cantidad}*${per.nombre.precio}*0.18"> </td>
+				<td th:text="${per.nombre.precio}"></td>
+				<td th:text="${per.cantidad}"></td>	
+				<td th:text="(${per.cantidad}*${per.nombre.precio}+(${per.cantidad}*${per.nombre.precio}*0.18)) "></td>	
+				<td th:text="${per.fechaped}"></td>	
+				<td th:text="${per.fechaent}"></td>					
+		</tr>	
+  	</tbody>
+	</table>	
+	<a th:href="@{/admin}" class="btn btn-info btn-sm">Regresar</a>
+	</div>
+	</div>
+</body>
+<br><br><br><br><br><br><br>
+
+<!-- Footer -->
+<ul th:replace="footer :: footer"></ul>
+<!-- Footer -->
+</html>

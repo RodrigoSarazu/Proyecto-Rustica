@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Comida Rustica</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="static/css/index3.css" th:href="@{/css/index3.css}">
+</head>
+<body>
+<ul th:replace="headeradmin :: navigation"></ul>
+<br>
+<div>
+	<h1 class="text-center" style="font-family: cursive;">Rustica Santa Anita<h1>				    	
+</div>
+<h3><center ><strong><u>Clientes</center></h3></strong></u>
+
+<a></a>
+<div class="container mt-4">
+<table class="table table-dark table-striped table-bordered border-danger">
+  <thead align="center">
+    <tr>
+    	<td scope="col"><strong>Detalle Usuario</strong></td>
+      	<td scope="col"><strong>Email Usuario</strong></td>
+      	<td scope="col"><strong>Fecha de Registro</strong></td>
+      	<td scope="col"><strong>Eliminar usuario</strong></td>
+      
+    </tr>
+  </thead>
+  	<tbody align="center">
+    	<tr th:each="per:${usuarios}">
+    			<th scope="row">
+    				<a class="btn-outline-success"
+    				th:href="@{/detalle_usuario/}+${per.idusu}"
+    				th:text="Detalle">
+    				</a>
+    			</th>
+    			<td th:text="${per.idusu}" hidden=""></td>
+				<td th:text="${per.email}"></td>
+				<td th:text="${per.nombre}" hidden=""></td>
+				<td th:text="${per.apellido}" hidden=""></td>
+				<td th:text="${per.dni}" hidden=""></td>
+				<td th:text="${per.celular}" hidden=""></td>
+				<td th:text="${per.fecha}"></td>
+				<td th:text="${per.password}" hidden=""></td>
+				<td>
+				<a th:href="@{/eliminar_usuario/}+${per.idusu}" class="btn btn-danger btn-sm"
+				title="Eliminar Comida"
+							onclick="return confirm('Estas seguro que quiere eliminar el usuario?');"
+				>Eliminar</a>		
+				</td>
+		</tr>	
+  	</tbody>
+	</table>
+	<div class="alert alert-warning alert-dismissable" th:if="${warning != null}">
+		<strong><label th:text="${warning}"></label></strong>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+	<a th:href="@{/admin}" class="btn btn-info">REGRESAR</a>
+</div>
+</body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<ul th:replace="footer :: footer"></ul>
+<!-- Footer -->
+</html>
